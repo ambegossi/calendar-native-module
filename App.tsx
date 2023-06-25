@@ -42,7 +42,19 @@ function App(): JSX.Element {
   };
 
   const createCalendarEventiOS = () => {
-    IOSCalendarModule.createCalendarEvent('Aniversário', 'Minha casa');
+    IOSCalendarModule.createCalendarEvent(
+      'Aniversário',
+      'Minha casa',
+      (error, eventId) => {
+        if (error) {
+          console.error(`Error found! ${error}`);
+        }
+
+        if (eventId) {
+          console.log(`event id ${eventId} returned`);
+        }
+      },
+    );
   };
 
   useEffect(() => {
@@ -65,21 +77,31 @@ function App(): JSX.Element {
       />
       <ScrollView contentContainerStyle={styles.scrollViewContentContainer}>
         <View style={styles.container}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={createCalendarEventAndroid}>
-            <Text>Criar Evento no Calendário (Android)</Text>
-          </TouchableOpacity>
+          {Platform.OS === 'android' && (
+            <>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={createCalendarEventAndroid}>
+                <Text>Criar Evento no Calendário</Text>
+              </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={createCalendarEventiOS}>
-            <Text>Criar Evento no Calendário (iOS)</Text>
-          </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={pickImageAndroid}>
+                <Text>Pick Image</Text>
+              </TouchableOpacity>
+            </>
+          )}
 
-          <TouchableOpacity style={styles.button} onPress={pickImageAndroid}>
-            <Text>Pick Image (Android)</Text>
-          </TouchableOpacity>
+          {Platform.OS === 'ios' && (
+            <>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={createCalendarEventiOS}>
+                <Text>Criar Evento no Calendário (iOS)</Text>
+              </TouchableOpacity>
+            </>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
