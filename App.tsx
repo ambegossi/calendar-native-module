@@ -8,11 +8,9 @@ import {
   TouchableOpacity,
   useColorScheme,
   View,
-  NativeModules,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-
-const {CalendarModule} = NativeModules;
+import CalendarModule from './src/modules/CalendarModule';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
