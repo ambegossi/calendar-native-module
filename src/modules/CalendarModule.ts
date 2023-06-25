@@ -7,8 +7,14 @@
  */
 import {NativeModules} from 'react-native';
 const {CalendarModule} = NativeModules;
+
+type Constants = {
+  DEFAULT_EVENT_NAME: string;
+};
+
 interface CalendarInterface {
   createCalendarEvent: (name: string, location: string) => void;
+  getConstants: () => Constants;
 }
 
 export default CalendarModule as CalendarInterface;

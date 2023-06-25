@@ -26,4 +26,13 @@ public class CalendarModule extends ReactContextBaseJavaModule {
         Log.d("CalendarModule", "Create event called with name: " + name
                 + " and location: " + location);
     }
+
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> constants = new HashMap<>();
+
+        constants.put("DEFAULT_EVENT_NAME", "NEW_EVENT");
+        
+        return constants;
+    }
 }

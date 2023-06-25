@@ -17,6 +17,10 @@ function App(): JSX.Element {
 
   const createCalendarEventAndroid = () => {
     CalendarModule.createCalendarEvent('Aniversário', 'Minha casa');
+
+    const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
+
+    console.log('DEFAULT_EVENT_NAME', DEFAULT_EVENT_NAME);
   };
 
   return (
