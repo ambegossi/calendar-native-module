@@ -50,6 +50,11 @@ function App(): JSX.Element {
       const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
       console.log('DEFAULT_EVENT_NAME', DEFAULT_EVENT_NAME);
     }
+
+    if (Platform.OS === 'ios') {
+      const {DEFAULT_EVENT_NAME} = IOSCalendarModule.getConstants();
+      console.log('DEFAULT_EVENT_NAME', DEFAULT_EVENT_NAME);
+    }
   }, []);
 
   return (
