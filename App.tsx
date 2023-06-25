@@ -14,6 +14,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import CalendarModule from './src/modules/CalendarModule';
 import ImagePickerModule from './src/modules/ImagePickerModule';
 import IOSCalendarModule from './src/modules/IOSCalendarModule';
+import IOSCalendarManager from './src/modules/IOSCalendarManager';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -54,6 +55,10 @@ function App(): JSX.Element {
     }
   };
 
+  const addCalendarEventiOS = async () => {
+    IOSCalendarManager.addEvent('Aniversário', 'Minha casa', 123);
+  };
+
   useEffect(() => {
     if (Platform.OS === 'android') {
       const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
@@ -63,6 +68,9 @@ function App(): JSX.Element {
     if (Platform.OS === 'ios') {
       const {DEFAULT_EVENT_NAME} = IOSCalendarModule.getConstants();
       console.log('DEFAULT_EVENT_NAME', DEFAULT_EVENT_NAME);
+
+      const {SOME_KEY} = IOSCalendarManager.getConstants();
+      console.log('SOME_KEY', SOME_KEY);
     }
   }, []);
 
@@ -95,7 +103,13 @@ function App(): JSX.Element {
               <TouchableOpacity
                 style={styles.button}
                 onPress={createCalendarEventiOS}>
-                <Text>Criar Evento no Calendário (iOS)</Text>
+                <Text>Criar Evento no Calendário</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.button}
+                onPress={addCalendarEventiOS}>
+                <Text>Adicionar Evento no Calendário</Text>
               </TouchableOpacity>
             </>
           )}
