@@ -15,20 +15,17 @@ import CalendarModule from './src/modules/CalendarModule';
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const createCalendarEventAndroid = () => {
-    CalendarModule.createCalendarEvent(
-      'Aniversário',
-      'Minha casa',
-      (error, eventId) => {
-        if (error) {
-          console.error(`Error found! ${error}`);
-        }
+  const createCalendarEventAndroid = async () => {
+    try {
+      const eventId = await CalendarModule.createCalendarEvent(
+        'Aniversário',
+        'Minha casa',
+      );
 
-        if (eventId) {
-          console.log(`event id ${eventId} returned`);
-        }
-      },
-    );
+      console.log(`Created a new event with id ${eventId}`);
+    } catch (e) {
+      console.error(e);
+    }
 
     const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
 
