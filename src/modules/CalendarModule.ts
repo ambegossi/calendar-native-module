@@ -12,8 +12,14 @@ type Constants = {
   DEFAULT_EVENT_NAME: string;
 };
 
+type ResultCallback = (error?: string, eventId?: number) => void;
+
 interface CalendarInterface {
-  createCalendarEvent: (name: string, location: string) => void;
+  createCalendarEvent: (
+    name: string,
+    location: string,
+    callback?: ResultCallback,
+  ) => void;
   getConstants: () => Constants;
 }
 

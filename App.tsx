@@ -16,7 +16,19 @@ function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const createCalendarEventAndroid = () => {
-    CalendarModule.createCalendarEvent('Aniversário', 'Minha casa');
+    CalendarModule.createCalendarEvent(
+      'Aniversário',
+      'Minha casa',
+      (error, eventId) => {
+        if (error) {
+          console.error(`Error found! ${error}`);
+        }
+
+        if (eventId) {
+          console.log(`event id ${eventId} returned`);
+        }
+      },
+    );
 
     const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
 
