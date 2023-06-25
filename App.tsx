@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import CalendarModule from './src/modules/CalendarModule';
+import ImagePickerModule from './src/modules/ImagePickerModule';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,11 +27,22 @@ function App(): JSX.Element {
     } catch (e) {
       console.error(e);
     }
-
-    const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
-
-    console.log('DEFAULT_EVENT_NAME', DEFAULT_EVENT_NAME);
   };
+
+  const pickImageAndroid = async () => {
+    try {
+      const uri = await ImagePickerModule.pickImage();
+
+      console.log(`Image URI ${uri}`);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
+    console.log('DEFAULT_EVENT_NAME', DEFAULT_EVENT_NAME);
+  }, []);
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
@@ -44,6 +56,10 @@ function App(): JSX.Element {
             style={styles.button}
             onPress={createCalendarEventAndroid}>
             <Text>Criar Evento no Calendário (Android)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button} onPress={pickImageAndroid}>
+            <Text>Pick Image (Android)</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -68,6 +84,7 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: 'white',
     borderRadius: 12,
+    marginBottom: 12,
   },
 });
 

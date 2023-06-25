@@ -1,5 +1,7 @@
 package com.calendarnativemodule;
 
+import android.content.Intent;
+
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -22,6 +24,7 @@ public class CalendarAppPackage implements ReactPackage {
         List<NativeModule> modules = new ArrayList<>();
 
         modules.add(new CalendarModule(reactContext));
+        modules.add(new ImagePickerModule(reactContext));
 
         return modules;
     }
