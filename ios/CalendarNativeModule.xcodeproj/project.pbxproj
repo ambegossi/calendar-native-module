@@ -14,6 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-CalendarNativeModule-CalendarNativeModuleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-CalendarNativeModule-CalendarNativeModuleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		E710D1052A48A9BD00609AFE /* RCTIOSCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E710D1042A48A9BD00609AFE /* RCTIOSCalendarModule.m */; };
+		E710D1062A48A9BD00609AFE /* RCTIOSCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E710D1042A48A9BD00609AFE /* RCTIOSCalendarModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-CalendarNativeModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CalendarNativeModule.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CalendarNativeModule/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-CalendarNativeModule-CalendarNativeModuleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarNativeModule-CalendarNativeModuleTests.release.xcconfig"; path = "Target Support Files/Pods-CalendarNativeModule-CalendarNativeModuleTests/Pods-CalendarNativeModule-CalendarNativeModuleTests.release.xcconfig"; sourceTree = "<group>"; };
+		E710D1032A48A88800609AFE /* RCTIOSCalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTIOSCalendarModule.h; sourceTree = "<group>"; };
+		E710D1042A48A9BD00609AFE /* RCTIOSCalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTIOSCalendarModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -116,6 +120,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E710D1042A48A9BD00609AFE /* RCTIOSCalendarModule.m */,
+				E710D1032A48A88800609AFE /* RCTIOSCalendarModule.h */,
 				13B07FAE1A68108700A75B9A /* CalendarNativeModule */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* CalendarNativeModuleTests */,
@@ -405,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* CalendarNativeModuleTests.m in Sources */,
+				E710D1062A48A9BD00609AFE /* RCTIOSCalendarModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E710D1052A48A9BD00609AFE /* RCTIOSCalendarModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);

@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -12,6 +13,7 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import CalendarModule from './src/modules/CalendarModule';
 import ImagePickerModule from './src/modules/ImagePickerModule';
+import IOSCalendarModule from './src/modules/IOSCalendarModule';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -39,9 +41,15 @@ function App(): JSX.Element {
     }
   };
 
+  const createCalendarEventiOS = () => {
+    IOSCalendarModule.createCalendarEvent('Aniversário', 'Minha casa');
+  };
+
   useEffect(() => {
-    const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
-    console.log('DEFAULT_EVENT_NAME', DEFAULT_EVENT_NAME);
+    if (Platform.OS === 'android') {
+      const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
+      console.log('DEFAULT_EVENT_NAME', DEFAULT_EVENT_NAME);
+    }
   }, []);
 
   return (
@@ -56,6 +64,12 @@ function App(): JSX.Element {
             style={styles.button}
             onPress={createCalendarEventAndroid}>
             <Text>Criar Evento no Calendário (Android)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={createCalendarEventiOS}>
+            <Text>Criar Evento no Calendário (iOS)</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button} onPress={pickImageAndroid}>
