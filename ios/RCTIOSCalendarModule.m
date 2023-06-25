@@ -17,13 +17,15 @@ RCT_EXPORT_MODULE();
   return NO;
 }
 
-RCT_EXPORT_METHOD(createCalendarEvent: (NSString *)name location:(NSString *)location callback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(createCalendarEvent: (NSString *)name location:(NSString *)location resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock) reject)
 {
-  NSNumber *eventId = [NSNumber numberWithInt:123];
+  NSInteger eventId = 123;
   
-  callback(@[[NSNull null], eventId]);
-  
-  RCTLogInfo(@"Pretending to create an event %@ at %@", name, location);
+  if (eventId) {
+    resolve(@(eventId));
+  } else {
+    reject(@"event_failure", @"no event id returned", nil);
+  }
 }
 
 @end

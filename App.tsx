@@ -41,20 +41,17 @@ function App(): JSX.Element {
     }
   };
 
-  const createCalendarEventiOS = () => {
-    IOSCalendarModule.createCalendarEvent(
-      'Aniversário',
-      'Minha casa',
-      (error, eventId) => {
-        if (error) {
-          console.error(`Error found! ${error}`);
-        }
+  const createCalendarEventiOS = async () => {
+    try {
+      const eventId = await IOSCalendarModule.createCalendarEvent(
+        'Aniversário',
+        'Minha casa',
+      );
 
-        if (eventId) {
-          console.log(`event id ${eventId} returned`);
-        }
-      },
-    );
+      console.log(`Created a new event with id ${eventId}`);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
